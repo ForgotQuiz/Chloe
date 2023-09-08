@@ -3,4 +3,4 @@ whitelist = {
   ["h86i42B61nE89k"] = true,
   ["0nlyVile"] = true
 }
-return userids
+return whitelist
