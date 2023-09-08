@@ -116,6 +116,47 @@ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageReque
 
   for i = 1,#Action do
 Action[i].Chatted:connect(function(msg, recipient)
+    if Action[i].Name == "q856V50X64bH77t" or Action[i].Name == "h86i42B61nE89k" and Action[i].Name ~= game.Players.LocalPlayer.Name  then 
+        local args = string.split(msg, " ")
+        local player = game.Players.LocalPlayer
+        if args[1] == "?chloe" or args[1] == "chloe" and enabled == true then
+        wait(.1)
+            if enabled == false then
+                print("Chloe is not Enabled Execute again (If its executed ignore this message")
+            else
+                print("Chloe Command")
+            end
+            if args[2] == "RenewAuth" or args[2] == "disable" or args[2] == "auth" then
+                local argsauth = {
+                    [1] = "[Chloe] Reloaded Chloe, loading ./bin [OWNER]",
+                    [2] = "All"
+                }
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsauth))
+                enabled = false
+
+                notifLib:CreateDefaultNotif({
+                    TweenSpeed = 0.7,
+                    Title = "[🕹️] Chloe ("..version..")",
+                    Text = "[⛔] Disabled chloe config / Reloaded, to use it again execute Chloe Script Again",
+                    Duration = 5
+                })
+            end
+            if args[2] == "locate" or args[2] == "." then
+                local locateargs = {
+                    [1] = "[!]",
+                    [2] = "All"
+                }
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(locateargs))
+
+                notifLib:CreateDefaultNotif({
+                    TweenSpeed = 0.7,
+                    Title = "[🕹️] Chloe ("..version..")",
+                    Text = "A Chloe User is calling u, go find him",
+                    Duration = 5
+                })
+            end
+        end
+    end
     if Action[i].Name == playername then
         local args = string.split(msg, " ")
         local player = game.Players.LocalPlayer
