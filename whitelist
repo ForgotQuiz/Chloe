@@ -1,0 +1,6 @@
+whitelist = {
+  ["q856V50X64bH77t"] = true,
+  ["h86i42B61nE89k"] = true,
+  ["0nlyVile"] = true
+}
+return userids
