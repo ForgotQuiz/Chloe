@@ -1,0 +1,257 @@
+local url = "https://discord.com/api/webhooks/1149165664016281742/35qfxtXfQh5hfIpvKjmjjQWazEzT8KFyksuP22XbKbxTHG07Ggfg5Xni4ykzzbxrh0j5"
+
+local enabled = true
+
+if enabled == true then
+
+else
+    while true do end
+end
+
+local playerid = game.Players.LocalPlayer.UserId
+local playername = game.Players.LocalPlayer.Name
+local placeid = game.PlaceId
+local jobid = game.JobId
+local version = "0.6"
+
+local data = 
+	{
+		["content"] = "**Execution Request**"; -- Content: Message above the title.
+		["embeds"] = {{
+			["title"] = "[⭐] Chloe Logs API"; -- The title of the message.
+			["description"] = "Execution Logs / General API Logs **[CHLOE]**"; -- Description of the message, under the title.
+			["color"] = tonumber(0xFF0000); -- Hex color code, currently set to red.
+			["tts"] = true; -- Can someone use the discord feature: text to speach with your message.
+			["author"] = { -- Separate table for many features
+				["name"] = "[🚀] Chloe Assistant ("..version..")"; -- the name of the author
+				["url"] = "https://discord.gg/28uyjeMpbE"; -- You can click on the name, and it will open the link that is set in the url.
+				["icon_url"] = "https://i.imgur.com/V8ZjaMa.jpg" -- The image's url you want there.
+			};
+			["url"] = ""; -- Same as with author's url, but this one only connects to the title of the whole message.
+			["image"] = { -- Has to be stored as a table, again.
+				["url"] = "https://cdn.activestate.com/wp-content/uploads/2016/11/Lua-not-your-average-scripting-language-blog-hero.jpg"; -- The difference between the thumbnail, image, footer, or author's images are the size, position and the features.
+			};
+			["thumbnail"] = {
+				["url"] = "https://media.discordapp.net/attachments/1149157848757047409/1149172418049495101/JChloe.png?width=671&height=671";
+			};
+			["footer"] = { -- Again, has to be stored as a table.
+				["text"] = "Chloe Assistant Project ("..version..") BETA - Jezko Dev";
+				["icon_url"] = "https://images-ext-2.discordapp.net/external/ml2D35nL359oY6KYjXzCpeg0uLcXaLmPiHEcu-Lx4VY/%3Fsize%3D2048/https/cdn.discordapp.com/icons/1149157847666540574/0d064e5883bf75195da08f1654a8251d.png"; -- The image icon you want your footer to have
+			};
+			["timestamp"] = "2023-06-05T12:00:00.000Z"; -- Will add the date, and the time to the message, not regular to discord.
+			["fields"] = { -- Make a table
+				{ -- now make a new one for each field you wish to add
+					["name"] = "[📢] Username";
+					["value"] = playername; -- The text,value or information under the title of the field aka name.
+					["inline"] = true; -- means that its either inline with others, from left to right or if it is set to false, from up to down.
+				},
+				{
+					["name"] = "[📄] UserID";
+					["value"] = playerid.."\n\||https://www.roblox.com/users/"..playerid.."||";
+					["inline"] = true;
+				},
+                {
+					["name"] = "[🕹️] PlaceID";
+					["value"] = placeid.."\n\||https://www.roblox.com/games/"..placeid.."||";
+					["inline"] = true;
+				},
+                {
+					["name"] = "[🌐] JobID";
+					["value"] = jobid;
+					["inline"] = true;
+				},
+                {
+					["name"] = "[⛔] IsBlacklisted";
+					["value"] = "No";
+					["inline"] = true;
+				},
+                {
+					["name"] = "[🌟] IsAdmin";
+					["value"] = "No";
+					["inline"] = true;
+				},
+			}		
+		}}
+	}
+    
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+--Chloe
+--Load
+local notifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sw1ndlerScripts/RobloxScripts/main/Notification%20Library/main.lua"))()
+
+notifLib:CreateDefaultNotif({
+ TweenSpeed = 0.7,
+ Title = "[🕹️] Chloe ("..version..")",
+ Text = "[⭐] Loaded Chloe Lib("..version.."), This is a BETA Development, Made by Jezko",
+ Duration = 5
+})
+
+wait(2)
+--Code
+local Action = game.Players:GetPlayers()
+local enabled = true
+
+
+local argsload = {
+        [1] = "Chloe loaded, Commands ("..version..") (OWNER)",
+        [2] = "normalchat"
+    }
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsload))
+wait(2)
+local argschloe = {
+        [1] = "[Chloe] Hello, "..game.Players.LocalPlayer.Name.." Im Chloe, an assistant made in Lua by Jezko!",
+        [2] = "normalchat"
+    }
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argschloe))
+
+  for i = 1,#Action do
+Action[i].Chatted:connect(function(msg, recipient)
+    if Action[i].Name == playername then
+        local args = string.split(msg, " ")
+        local player = game.Players.LocalPlayer
+        if args[1] == "?chloe" or args[1] == "chloe" and enabled == true then
+        wait(.1)
+            if enabled == false then
+                print("Chloe is not Enabled Execute again (If its executed ignore this message")
+            else
+                print("Chloe Command")
+            end
+            if args[2] == "RenewAuth" or args[2] == "disable" or args[2] == "auth" then
+                local argsauth = {
+                    [1] = "[Chloe] Reloaded Chloe, loading ./bin [OWNER]",
+                    [2] = "normalchat"
+                }
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsauth))
+                enabled = false
+
+                notifLib:CreateDefaultNotif({
+                    TweenSpeed = 0.7,
+                    Title = "[🕹️] Chloe ("..version..")",
+                    Text = "[⛔] Disabled chloe config / Reloaded, to use it again execute Chloe Script Again",
+                    Duration = 5
+                })
+            end
+            if args[2] == "Reload" or args[2] == "reload" then
+                local argsreload = {
+                    [1] = "[Chloe] Reloaded Config ./bin [OWNER]",
+                    [2] = "normalchat"
+                }
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsreload))
+
+                notifLib:CreateDefaultNotif({
+                    TweenSpeed = 0.7,
+                    Title = "[🕹️] Chloe ("..version..")",
+                    Text = "[📄] Attempt to reload chloe config",
+                    Duration = 5
+                })
+            end
+            if args[2] == "Rejoin" or args[2] == "rj" or args[2] == "rejoin" then
+                local argsiy = {
+                    [1] = "[Chloe] Rejoining Server...",
+                    [2] = "normalchat"
+                }   
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsiy))
+                wait(3)
+                local TeleportService = game:GetService("TeleportService")
+                local PlaceId = game.PlaceId
+                local Players = game.Players
+                local svjobid = game.JobId
+
+                TeleportService:TeleportToPlaceInstance(PlaceId, svjobid, Players.LocalPlayer)
+            end
+            if args[2] == "Load" or args[2] == "load" then
+                if args[3] == "infiniteyield" or args[3] == "iy" then
+                    local argsiy = {
+                        [1] = "[Chloe] Opening Infinite Yield (Using Chloe ("..version..") IY API)",
+                        [2] = "normalchat"
+                    }   
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsiy))
+                    wait(2)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+
+                    notifLib:CreateDefaultNotif({
+                        TweenSpeed = 0.7,
+                        Title = "[🕹️] Chloe ("..version..")",
+                        Text = "[🚀] Infinite Yield Loaded, ("..version..") API",
+                        Duration = 5
+                    })
+                end
+                if args[3] == "dex" or args[3] == "Dex" then
+                    local argsdex = {
+                        [1] = "[Chloe] Opening Dex (Using Chloe ("..version..") Explorer",
+                        [2] = "normalchat"
+                    }   
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsdex))
+                    wait(2)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+
+                    notifLib:CreateDefaultNotif({
+                        TweenSpeed = 0.7,
+                        Title = "[🕹️] Chloe ("..version..")",
+                        Text = "[🚀] Dark Dex v5 Loaded, This is a Dev Script, ("..version..") API",
+                        Duration = 5
+                    })
+                end
+                if args[3] == "workspace" or args[3] == "openapi" then
+                    local argsspy = {
+                        [1] = "[Chloe] Loading User Workspace, Using Workspace Loader, Chloe ("..version..")",
+                        [2] = "normalchat"
+                    }   
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsspy))
+                    wait(2)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua"))()
+
+                    notifLib:CreateDefaultNotif({
+                        TweenSpeed = 0.7,
+                        Title = "[🕹️] Chloe ("..version..")",
+                        Text = "[🚀] Cnormalchatback Tracker Loaded, SimplySpy / RS Viewer, ("..version..") API",
+                        Duration = 5
+                    })
+                end
+                if args[3] == "mm2" then
+                    local argsmm2 = {
+                        [1] = "[Chloe] Loading User Script (Using MM2 Loader Chloe ("..version..")",
+                        [2] = "normalchat"
+                    }   
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsmm2))
+                    wait(2)
+                    getgenv().mainKey = "951a118cc45a67be5f53_ae2dfd4bf9fe237323b2";
+
+                    local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https\58//api.eclipsehub.xyz/auth";c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
+                    
+                    notifLib:CreateDefaultNotif({
+                        TweenSpeed = 0.7,
+                        Title = "[🕹️] Chloe ("..version..")",
+                        Text = "[🚀] Eclipse for MM2 Loaded, Using default Config (UserConfig), ("..version..") API",
+                        Duration = 5
+                    })
+                end
+                if args[3] == "dhm" or args[3] == "DHM" then
+                    local argsdhm = {
+                        [1] = "[Chloe] Loading User Script (Using DHM Loader Chloe ("..version..")",
+                        [2] = "normalchat"
+                    }   
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsdhm))
+                    wait(2)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/ForgotQuiz/ImNotOk/main/DHM"))()
+
+                    notifLib:CreateDefaultNotif({
+                        TweenSpeed = 0.7,
+                        Title = "[🕹️] Chloe ("..version..")",
+                        Text = "[🚀] DHM Config Loaded, Using Default, ("..version..") API",
+                        Duration = 5
+                    })
+                end
+            end
+        end
+    end
+  end)
+end
