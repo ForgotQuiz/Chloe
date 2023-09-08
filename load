@@ -102,13 +102,13 @@ local enabled = true
 
 local argsload = {
         [1] = "Chloe loaded, Commands ("..version..") (OWNER)",
-        [2] = "normalchat"
+        [2] = "All"
     }
 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsload))
 wait(2)
 local argschloe = {
         [1] = "[Chloe] Hello, "..game.Players.LocalPlayer.Name.." Im Chloe, an assistant made in Lua by Jezko!",
-        [2] = "normalchat"
+        [2] = "All"
     }
 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argschloe))
 
@@ -127,7 +127,7 @@ Action[i].Chatted:connect(function(msg, recipient)
             if args[2] == "RenewAuth" or args[2] == "disable" or args[2] == "auth" then
                 local argsauth = {
                     [1] = "[Chloe] Reloaded Chloe, loading ./bin [OWNER]",
-                    [2] = "normalchat"
+                    [2] = "All"
                 }
                 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsauth))
                 enabled = false
@@ -142,7 +142,7 @@ Action[i].Chatted:connect(function(msg, recipient)
             if args[2] == "Reload" or args[2] == "reload" then
                 local argsreload = {
                     [1] = "[Chloe] Reloaded Config ./bin [OWNER]",
-                    [2] = "normalchat"
+                    [2] = "All"
                 }
                 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsreload))
 
@@ -156,7 +156,7 @@ Action[i].Chatted:connect(function(msg, recipient)
             if args[2] == "Rejoin" or args[2] == "rj" or args[2] == "rejoin" then
                 local argsiy = {
                     [1] = "[Chloe] Rejoining Server...",
-                    [2] = "normalchat"
+                    [2] = "All"
                 }   
                 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsiy))
                 wait(3)
@@ -171,7 +171,7 @@ Action[i].Chatted:connect(function(msg, recipient)
                 if args[3] == "infiniteyield" or args[3] == "iy" then
                     local argsiy = {
                         [1] = "[Chloe] Opening Infinite Yield (Using Chloe ("..version..") IY API)",
-                        [2] = "normalchat"
+                        [2] = "All"
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsiy))
                     wait(2)
@@ -187,7 +187,7 @@ Action[i].Chatted:connect(function(msg, recipient)
                 if args[3] == "dex" or args[3] == "Dex" then
                     local argsdex = {
                         [1] = "[Chloe] Opening Dex (Using Chloe ("..version..") Explorer",
-                        [2] = "normalchat"
+                        [2] = "All"
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsdex))
                     wait(2)
@@ -203,7 +203,7 @@ Action[i].Chatted:connect(function(msg, recipient)
                 if args[3] == "workspace" or args[3] == "openapi" then
                     local argsspy = {
                         [1] = "[Chloe] Loading User Workspace, Using Workspace Loader, Chloe ("..version..")",
-                        [2] = "normalchat"
+                        [2] = "All"
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsspy))
                     wait(2)
@@ -212,14 +212,14 @@ Action[i].Chatted:connect(function(msg, recipient)
                     notifLib:CreateDefaultNotif({
                         TweenSpeed = 0.7,
                         Title = "[🕹️] Chloe ("..version..")",
-                        Text = "[🚀] Cnormalchatback Tracker Loaded, SimplySpy / RS Viewer, ("..version..") API",
+                        Text = "[🚀] CAllback Tracker Loaded, SimplySpy / RS Viewer, ("..version..") API",
                         Duration = 5
                     })
                 end
                 if args[3] == "mm2" then
                     local argsmm2 = {
                         [1] = "[Chloe] Loading User Script (Using MM2 Loader Chloe ("..version..")",
-                        [2] = "normalchat"
+                        [2] = "All"
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsmm2))
                     wait(2)
@@ -237,7 +237,7 @@ Action[i].Chatted:connect(function(msg, recipient)
                 if args[3] == "dhm" or args[3] == "DHM" then
                     local argsdhm = {
                         [1] = "[Chloe] Loading User Script (Using DHM Loader Chloe ("..version..")",
-                        [2] = "normalchat"
+                        [2] = "All"
                     }   
                     game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(argsdhm))
                     wait(2)
